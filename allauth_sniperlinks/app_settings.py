@@ -2,6 +2,7 @@ from django.conf import settings
 from django.apps import apps as django_apps
 from django.core.exceptions import ImproperlyConfigured
 
+CACHE_NAME = getattr(settings, "ALLAUTH_SNIPERLINKS_CACHE_NAME", 'default')
 VERIFICATION_SENDER = getattr(settings, "ALLAUTH_SNIPERLINKS_VERIFICATION_SENDER", settings.DEFAULT_FROM_EMAIL)
 BANNER_ONLY_PRIMARY = getattr(settings, "ALLAUTH_SNIPERLINKS_BANNER_ONLY_PRIMARY", True)
 SAFE_TEMPLATES = getattr(

@@ -1,8 +1,12 @@
-from django.core.cache import cache
+from django.core.cache import caches
+from allauth_sniperlinks.app_settings import CACHE_NAME
 from allauth_sniperlinks.models import SniperLink
 from allauth_sniperlinks.utils import get_sniper_link, get_sniper_link_img, bump_sniperlink_cache_version
 from allauth_sniperlinks.utils import USER_SNIPERLINK_CACHE_KEY, get_sniperlink_cache_version
 from allauth_sniperlinks.app_settings import VERIFICATION_SENDER, BANNER_ONLY_PRIMARY
+
+
+cache = caches[CACHE_NAME]
 
 
 def unverified_email_sniperlinks(request):

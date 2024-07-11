@@ -4,13 +4,17 @@ import tld
 import dns.resolver
 from django.contrib.staticfiles import finders
 from django.templatetags.static import static
-from django.core.cache import cache
+from django.core.cache import caches
+from .app_settings import CACHE_NAME
 from .models import MailProviders
 
 INVALID_EMAIL_FLAG = 'INVALIDEMAIL'
 USER_SNIPERLINK_CACHE_PREFIX = 'sniperlinks_user_'
 USER_SNIPERLINK_CACHE_KEY = USER_SNIPERLINK_CACHE_PREFIX + '{}'
 SNIPERLINKS_CACHE_VERSION_KEY = 'sniperlinks_version'
+
+
+cache = caches[CACHE_NAME]
 
 
 def get_sniperlink_cache_version():

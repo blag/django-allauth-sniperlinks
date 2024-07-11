@@ -1,4 +1,4 @@
-from django.core.cache import cache
+from django.core.cache import caches
 from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 from allauth.account.models import EmailAddress
@@ -6,6 +6,9 @@ from allauth_sniperlinks import app_settings
 from allauth_sniperlinks.utils import get_mx_domian_and_provider, get_sniperlink_cache_version
 from allauth_sniperlinks.utils import USER_SNIPERLINK_CACHE_KEY
 from allauth_sniperlinks.models import SniperLink
+
+
+cache = caches[app_settings.CACHE_NAME]
 
 
 @receiver(pre_save, sender=EmailAddress)
